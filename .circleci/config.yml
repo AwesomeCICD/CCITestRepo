@@ -2,14 +2,23 @@ orbs:
   aws-ecr: circleci/aws-ecr@6.7.0
 version: 2.1
 
-workflows:
-  build_and_push_image:
-    jobs:
+jobs:
+  my-custom-ecr-job:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          context: Context
           create-repo: true
           region: AWS_REGION
-          repo: testrepo
+          repo: testrepo      
+  
+
+workflows:
+  ecr_workflow:
+    jobs:
+      - my-custom-ecr-job:
+          context: Context
+
