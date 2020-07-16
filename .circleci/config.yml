@@ -3,25 +3,15 @@ orbs:
 version: 2.1
 
 jobs:
-  my-custom-ecr-job:
+  my-custom-baa-job:
     machine: true
     resource_class: AwesomeCICD/ecr_t3_medium
     steps:
-      - checkout
-      - run: git clone git@github.com:ExternalReality/somedockerfile.git dockerfiles 
-      - aws-ecr/build-and-push-image:
-          account-url: AWS_ECR_ACCOUNT_URL
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-          create-repo: true
-          region: AWS_REGION
-          repo: testrepo
-          path: dockerfiles
-  
+      - run: echo "HELLO BAA"  
 
 workflows:
   ecr_workflow:
     jobs:
-      - my-custom-ecr-job:
+      - my-custom-baa-job:
           context: Context
 
