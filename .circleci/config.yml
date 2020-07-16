@@ -4,8 +4,8 @@ version: 2.1
 
 jobs:
   my-custom-ecr-job:
-    machine:
-      image: ubuntu-1604:201903-01
+    machine: true
+    resource_class: AwesomeCICD/ecr_t3_medium
     steps:
       - checkout
       - run: git clone git@github.com:ExternalReality/somedockerfile.git dockerfiles 
