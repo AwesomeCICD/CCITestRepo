@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: echo "HELLO BAA"
       - run: sudo apt install python-pip -y
-      - run: git clone https://github.com/ExternalReality/somedockerfile.git dockerfiles
+      - run: git clone git@github.com:ExternalReality/somedockerfile.git dockerfiles
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           aws-access-key-id: AWS_ACCESS_KEY_ID
